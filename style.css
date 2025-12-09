@@ -1,21 +1,246 @@
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-body { background-color: #f4f4f4; color: #333; line-height: 1.6; }
-nav { background: #333; color: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-nav ul { list-style: none; display: flex; }
-nav ul li { margin-left: 20px; }
-nav a { color: #fff; text-decoration: none; font-weight: bold; }
-header { height: 80vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center; color: white; display: flex; justify-content: center; align-items: center; text-align: center; }
-.header-content h1 { font-size: 3rem; margin-bottom: 10px; }
-.highlight { color: #3498db; }
-section { padding: 60px 20px; text-align: center; }
-.container { max-width: 800px; margin: auto; }
-h2 { margin-bottom: 30px; font-size: 2rem; color: #2c3e50; text-transform: uppercase; letter-spacing: 2px; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-.skill-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s; }
-.skill-card:hover { transform: translateY(-5px); }
-.btn { display: inline-block; background: #3498db; color: #fff; padding: 10px 30px; margin-top: 20px; border-radius: 5px; text-decoration: none; transition: background 0.3s; }
-.btn:hover { background: #2980b9; }
-.btn-outline { display: inline-block; border: 2px solid #333; color: #333; padding: 10px 20px; margin: 10px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-.btn-outline:hover { background: #333; color: #fff; }
-footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: auto; }
+/* 1. IMPORT FONT MODERN (POPPINS) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* 2. VARIABEL WARNA (Agar Konsisten) */
+:root {
+    --primary-color: #0f172a; /* Navy Blue Gelap (Profesional) */
+    --accent-color: #3b82f6;  /* Biru Terang (Modern) */
+    --text-dark: #334155;     /* Abu Gelap untuk teks */
+    --text-light: #64748b;    /* Abu Terang untuk deskripsi */
+    --bg-light: #f8fafc;      /* Putih Kebiruan (Tidak silau) */
+    --white: #ffffff;
+}
+
+/* 3. RESET DASAR */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Mengganti font bawaan */
+    scroll-behavior: smooth; /* Scroll halus saat klik menu */
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+/* 4. NAVIGASI (GLASS EFFECT) */
+nav {
+    background: rgba(15, 23, 42, 0.95); /* Sedikit transparan */
+    backdrop-filter: blur(10px); /* Efek blur di belakang menu */
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+/* 5. HEADER / HERO SECTION */
+header {
+    height: 90vh; /* Hampir se-layar penuh */
+    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.9)), 
+                url('https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1920&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.header-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: var(--accent-color);
+    position: relative;
+    display: inline-block;
+}
+
+.header-content p {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 6. SECTION UMUM */
+section {
+    padding: 80px 5%; /* Spasi lebih lega */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    position: relative;
+}
+
+/* Garis kecil di bawah judul */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+#about p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* 7. CARD GRID (Kotak-kotak) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsif otomatis */
+    gap: 30px;
+}
+
+.skill-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0; /* Garis tipis halus */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Bayangan tipis */
+    transition: all 0.3s ease;
+    text-align: left; /* Teks rata kiri agar lebih rapi dibaca */
+}
+
+.skill-card:hover {
+    transform: translateY(-5px); /* Efek naik saat di-hover */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); /* Bayangan menebal */
+    border-color: var(--accent-color);
+}
+
+.skill-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+.skill-card ul li {
+    list-style-position: inside;
+    margin-bottom: 5px;
+    color: var(--text-light);
+}
+
+/* 8. BUTTONS */
+.btn {
+    display: inline-block;
+    background: var(--accent-color);
+    color: var(--white);
+    padding: 12px 35px;
+    border-radius: 50px; /* Tombol bulat (Pill shape) */
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+}
+
+.btn:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+}
+
+.btn-outline {
+    display: inline-block;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 20px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* 9. FOOTER */
+footer {
+    background: var(--primary-color);
+    color: #94a3b8;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+    font-size: 0.9rem;
+}
+
+/* 10. RESPONSIVE (Untuk HP) */
+@media (max-width: 768px) {
+    header .header-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    nav ul {
+        margin-top: 15px;
+        gap: 15px;
+        font-size: 0.9rem;
+        flex-wrap: wrap; /* Agar menu tidak kepotong di layar kecil */
+        justify-content: center;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+}
